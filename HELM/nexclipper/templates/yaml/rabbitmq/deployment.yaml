@@ -86,13 +86,16 @@ data:
       loopback_users.guest = false
    
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: rabbitmq
   namespace: nexclipper
 spec:
   serviceName: rabbitmq
+  selector:
+    matchLabels:
+      app: rabbitmq
   replicas: 3
   template:
     metadata:

@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nexclipper-collector
@@ -8,6 +8,9 @@ metadata:
   namespace: nexclipper
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: nexclipper-collector
   template:
     metadata:
       name: nexclipper-collector
